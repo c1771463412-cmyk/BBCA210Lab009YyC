@@ -31,7 +31,7 @@ int main() {
     ifstream fin("grades.txt");
 
     if (!fin) {
-        cout << "Open file error." << endl;
+        cout << "Error: grades.txt could not be opened.\n";
         return 1;
     }
 
@@ -126,6 +126,8 @@ void analyzeArray(array<int, NUM_STUDENTS>& grades) {
     }
     cout << endl;
 }
+
+//----------------------------------------------------------------
 
 // readVector() reads student grades from an input file
 // arguments: input file and vector of student grades
