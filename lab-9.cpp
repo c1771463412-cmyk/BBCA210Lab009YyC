@@ -1,6 +1,7 @@
 // COMSC-210-5293 | Lab 7 | Yuyi Chen
 
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <array>
 #include <vector>
@@ -14,10 +15,13 @@ const int TARGET_GRADE = 88;
 
 void readArray(ifstream&, array<int, NUM_STUDENTS>&);
 void displayArray(const array<int, NUM_STUDENTS>&);
+void analyzeArray(array<int, NUM_STUDENTS>&);
 void readVector(ifstream&, vector<int>&);
 void displayVector(const vector<int>&);
 
 int main() {
+    cout << fixed << setprecision(2);
+
     array<int, NUM_STUDENTS> grades;
     ifstream fin("grades.txt");
 
@@ -31,6 +35,7 @@ int main() {
     fin.close();
 
     displayArray(grades);
+    analyzeArray(grades);
 
     return 0;
 }
@@ -51,8 +56,10 @@ void displayArray(const array<int, NUM_STUDENTS>& grades) {
     cout << "Student grades using STD::ARRAY\n\n";
 
     cout << "Number of students: " << grades.size() << endl;
+
     cout << "First grade: " << grades.front() << endl;
     cout << "Last grade: " << grades.back() << endl;
+
     cout << "Array empty? " << (grades.empty() ? "Yes" : "No") << endl;
 
     cout << "\nGrades:\n";
@@ -60,4 +67,21 @@ void displayArray(const array<int, NUM_STUDENTS>& grades) {
         cout << grades[i] << " ";
     }
     cout << endl;
+}
+
+// analyzeArray() analyzes and sorts student grades
+// arguments: array of student grades
+// returns: nothing
+void analyzeArray(array<int, NUM_STUDENTS>& grades) {
+    int highest = *max_element(grades.begin(), grades.end());
+
+    int lowest = *min_element(grades.begin(), grades.end());
+
+    int total = accumulate(grades.begin(), grades.end(), 0);
+
+    double average = (double)total / grades.size();
+
+    cout << "\nHighest grade: " << highest << endl;
+    cout << "Lowest grade: " << lowest << endl;
+    cout << "Average grade: " << average << endl;
 }
