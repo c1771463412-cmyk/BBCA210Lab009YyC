@@ -30,6 +30,8 @@ int main() {
 
     fin.close();
 
+    displayArray(grades);
+
     return 0;
 }
 
@@ -40,4 +42,22 @@ void readArray(ifstream& fin, array<int, NUM_STUDENTS>& grades) {
     for (int i = 0; i < NUM_STUDENTS; i++) {
         fin >> grades[i];
     }
+}
+
+// displayArray() displays student grades and basic array information
+// arguments: array of student grades
+// returns: nothing
+void displayArray(const array<int, NUM_STUDENTS>& grades) {
+    cout << "Student grades using STD::ARRAY\n\n";
+
+    cout << "Number of students: " << grades.size() << endl;
+    cout << "First grade: " << grades.front() << endl;
+    cout << "Last grade: " << grades.back() << endl;
+    cout << "Array empty? " << (grades.empty() ? "Yes" : "No") << endl;
+
+    cout << "\nGrades:\n";
+    for (int i = 0; i < NUM_STUDENTS; i++) {
+        cout << grades[i] << " ";
+    }
+    cout << endl;
 }
