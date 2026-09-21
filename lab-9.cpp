@@ -1,4 +1,4 @@
-// COMSC-210-5293 | Lab 7 | Yuyi Chen
+// COMSC-210-5293 | Lab 9 | Yuyi Chen
 
 #include <iostream>
 #include <iomanip>
